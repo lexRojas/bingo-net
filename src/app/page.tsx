@@ -283,7 +283,7 @@ export default function Home() {
                 onChange={(e) => setValor(Number(e.target.value).valueOf())} />
             </div>
 
-            <button onClick={clickSiguiente} className='bg-blue-900 rounded-lg shadow-md text-white p-2' disabled={modoCliente}> Siguiente </button>
+            <button onClick={clickSiguiente} className='bg-blue-900 rounded-lg shadow-md text-white  w-full md:p-2' disabled={modoCliente}> Siguiente </button>
 
           </div>
 
