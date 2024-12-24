@@ -1,0 +1,42 @@
+.numero {
+  padding: 2px;
+  margin: 2px;
+  border: solid black 1px;
+  border-radius: 25%;
+  font-weight: 600;
+  background-color: antiquewhite;
+}
+
+.numero_selected {
+  padding: 2px;
+  margin: 2px;
+  border: solid black 1px;
+  font-weight: 600;
+  color: antiquewhite;
+  border-radius: 25%;
+  background-color: rgb(255, 5, 172);
+}
+
+.bola {
+  background-color: hsl(45, 61%, 41%);
+  background-image: radial-gradient(
+    circle farthest-side at center,
+    hsl(61, 100%, 89%) 0%,
+    hsl(45, 65%, 81%) 0%,
+    hsl(45, 100%, 90%) 50%,
+    hsl(45, 37%, 51%) 99%
+  );
+
+  @apply text-center;
+  @apply flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply border;
+  @apply border-black;
+  @apply rounded-full;
+  @apply w-[20rem];
+  @apply h-[20rem];
+  @apply text-[10rem];
+  @apply text-center;
+  @apply align-middle;
+}
