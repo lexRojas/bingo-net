@@ -5,6 +5,7 @@ import { alias } from '@/components/numeros'
 import { useRef, useState } from 'react'
 import generaPartida from '@/api/generadorPalabras'
 import Ably from 'ably'
+import GeneradorNumeros from '@/components/generador'
 
 const client = new Ably.Realtime({
   key: process.env.NEXT_PUBLIC_API_WEBSOCKET,
@@ -22,8 +23,7 @@ export default function Home() {
   const [modoCliente, setModoCliente] = useState<boolean>(false)
   const [conectado, setConectado] = useState<boolean>(false)
 
-
-
+  const gen: GeneradorNumeros = new GeneradorNumeros();
 
   const numero_digitado = useRef(null)
   const partida_suscribir = useRef<HTMLInputElement>(null)
@@ -49,12 +49,15 @@ export default function Home() {
 
 
   const clickSiguiente = () => {
-    if (numero_digitado.current) {
-      const { value } = numero_digitado.current
-      const n = Number(value).valueOf()
 
-      aplicarNumero(n)
+    const bolita = gen.generarNumero()
+    console.log(bolita)
+
+    if (bolita) {
+      setNumeroAlias(bolita)
+      aplicarNumero(bolita)
     }
+
   }
   const aplicarNumero = (n: number) => {
 
@@ -95,6 +98,8 @@ export default function Home() {
 
     const newArray: number[] = []
     const newArraySelected: boolean[] = Array.from({ length: 75 }, () => false)
+
+    gen.reiniciar()
 
     setNumeroSeleccionado(newArray)
     setSelected(newArraySelected)
@@ -274,7 +279,7 @@ export default function Home() {
                 type="number"
                 name="numero"
                 id="numero"
-                disabled={modoCliente}
+                disabled
                 min={1}
                 max={75}
                 ref={numero_digitado}
